@@ -18,5 +18,10 @@ body{
     flex-direction:row;
     justify-content:space-between;
     margin-top: 5px;  
-    padding:5px 30px 5px 5px;
+    padding-right:50px;
+    font-size: 1.2rem;
 }
+.inner-container{
+    display:flex;
+}
+ 
