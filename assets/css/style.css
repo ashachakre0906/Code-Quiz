@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+body{
+    background-color: bisque;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+/*height:100vh good for responsive */
+.outer-div-container{
+    padding:10px;
+    height:100vh;
+}
+.nav-bar{ 
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    margin-top: 5px;  
+    padding:5px 30px 5px 5px;
+}
