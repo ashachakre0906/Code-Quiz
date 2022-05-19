@@ -4,7 +4,9 @@
     box-sizing:border-box;
 }
 body{
-    background-color: bisque;
+    /* background-color: bisque; */
+    /* background: linear-gradient(to bottom, #33ccff 0%, #993366 100%); */
+    background-color:#a2b9bc;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
 }
