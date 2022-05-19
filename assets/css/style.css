@@ -22,6 +22,19 @@ body{
     font-size: 1.2rem;
 }
 .inner-container{
-    display:flex;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items:center;
+  height: 50%;
+  width:50%;
+  margin:0 auto;
+  background-color:lightblue;
+  box-shadow: 20px 20px 50px grey;
 }
+header{
+    text-align: center;
+    text-decoration: none;
+}
+
  
