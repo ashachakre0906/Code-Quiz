@@ -22,6 +22,11 @@ body {
   padding-right: 50px;
   font-size: 1.2rem;
 }
+a {
+ outline:none;
+ text-decoration: none;
+ color:black;
+}
 .inner-container {
   display: flex;
   flex-direction: column;
