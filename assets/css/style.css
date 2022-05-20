@@ -68,11 +68,11 @@ a {
 .hidden {
   display: none;
 }
-main {
+section {
   line-height: 1.8;
   font-size: 1.2rem;
 }
-main h2 {
+section h2 {
   padding: 10px 10px;
 }
 label {

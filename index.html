@@ -13,40 +13,57 @@
 <body>
     <!--main outer div-->
     <div class = "outer-div-container">
-        <!--nav bar section-->
-        <div class="nav-bar">
+        <!--nav-bar section-->
+        <nav class="nav-bar">
             <a href="View high scores">View high scores</a> 
-            <p>Time:</p>
-        </div>
+            <p class ="timer">Time: <span id="timer"></span></p>
+        </nav>
         <div class ="inner-container">
-            <header class ="quiz-intro" id="header">  <!---quiz intro-->
+            <header class ="quiz-intro" id="header">  <!---quiz intro section-->
                 <h1>Coding Quiz Challenge</h1>
                     <p class="content">Try to answer the following code-related questions within the time limit.<br>
                       Keep in mind that incorrect answers will penalize your score/time by ten seconds!
                     </p>
                 <button class="button" id="start-quiz" type="button">Start Quiz</button>
             </header>
-            <main class="hidden" id="main"><!--quiz-content-->
-                <h2>Which of the following best describes JavaScript?</h2>
-                <input type="radio" id="choice-1" name="quiz-choice" value="true">
-                <label for="choice-1">a low-level programming language.</label><br>
-                <input type="radio" id="choice-2" name="quiz-choice" value="false">
-                <label for="choice-2">a scripting language precompiled in the browser.</label><br>
-                 <input type="radio" id="choice-3" name="quiz-choice" value="false">
-                <label for="choice-3">a compiled scripting language.</label><br>
-                <input type="radio" id="choice-4" name="quiz-choice" value="false">
-                <label for="choice-4">an object-oriented scripting language</label><br>
-                <h2>All done!</h2>
-                <p>Your final score is</p>
-                <label for="fname">Enter Initials:</label>
-                <input type="text" id="name" name="name">                
-                <button class="button" id="submit" type="button">Submit</button>
-                <h2>High scores</h2>
-                <button class="button" id="go-Back" type="button">Go Back</button>
-                <button class="button" id="clear-High-Scores" type="button">Clear high Scores</button>
-            </main>
+            <!--This section will display the quiz question-->
+                <section class="hidden" id="main">
+                    <h2>Which of the following best describes JavaScript?</h2>
+                    <input type="radio" id="choice-1" name="quiz-choice" value="true">
+                    <label for="choice-1">a low-level programming language.</label><br>
+                    <input type="radio" id="choice-2" name="quiz-choice" value="false">
+                    <label for="choice-2">a scripting language precompiled in the browser.</label><br>
+                     <input type="radio" id="choice-3" name="quiz-choice" value="false">
+                    <label for="choice-3">a compiled scripting language.</label><br>
+                    <input type="radio" id="choice-4" name="quiz-choice" value="false">
+                    <label for="choice-4">an object-oriented scripting language</label><br>
+                </section>        
+             <!--This section will ask user to enter initials and will display final score-->
+                <section class="hidden" id="main">
+                    <h2>All done!</h2>
+                    <p>Your final score is</p>
+                    <form id="initials-form" class="initial">
+                    <label for="fname">Enter Initials:</label>
+                    <input type="text" id="name" name="name">                
+                    <button class="button" id="create-high-score" type="button">Submit</button>
+                    </form>
+                </section>
+            <!--Thi section will show high scores and this includes button to go back and clear high scores-->
+                <section class="hidden" id="main">
+                    <h2>High scores</h2>
+                    <button class="button" id="go-Back" type="button">Go Back</button>
+                    <button class="button" id="clear-high-score" type="button">Clear high Scores</button> 
+                </section>  
+            <!--This section will only display if the answer is right or wrong-->
+                <section class="hidden" id="correct">
+                   <h2>Correct</h2> 
+                </section> 
+            <section class="hidden" id="wrong">
+                <h2>wrong</h2> 
+            </section>             
         </div>
     </div>  
+    <!--Link to Javscript-->
    <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 </html>
