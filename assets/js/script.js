@@ -35,7 +35,21 @@ var questions =[{
     answer: "var"  
 },
 ];
+//score will starts at 0
+var currentScore =0;
+//index of question array starts at 0
+var questionArr =0;
+//Timeleft on timer
+var timeLeft =0;
+//start button to get the quiz started
 var startButton = document.getElementById("start-quiz");
+//Total Time set when the game starts
+var startingTime =60;
+//Time starts from 0
+var timeInterval=0;
+//10 sec will be deducted for every incorrect answer
+var penalty = 10;
+
 startButton.addEventListener("click",renderQuestion);
 // var createHighScore = document.getElementById("create-high-score");
 // createHighScore.addEventListener("click",highScore);
@@ -46,10 +60,52 @@ startButton.addEventListener("click",renderQuestion);
 var headerEl = document.getElementById("header")
 var mainEl = document.getElementById("main")
 // var questionArr=[""];
+//Start timer when the game starts after user clicks start-quiz button
+
+startButton.addEventListener("click",function() {
+    if (timeInterval===0){
+        timeInterval = setInterval(function() {
+            startingTime--;
+            timeLeft.textContent= "Seconds Left:" + startingTime;
+            if(startingTime <= 0){
+                    clearInterval(timeInterval);
+                    endGame();
+                    timeLeft.textContent = "You are out of time!"
+                }
+            }, 1000);
+        }
+        renderQuestion();
+});
+
+
 function renderQuestion(){
     headerEl.classList.add("hidden");//Targets the header element which will add the class hidden
     mainEl.classList.remove("hidden");//Targets the main element which will remove the class hidden
+    renderQuestion.innerHTML = "";
+    createList.innerHTML = "";
+    for ( var i = 0;i < questions.length; i++){
+        var showQuestions = questions[renderQuestion].question;
+        var showChoices = questions[renderQuestion].choices;
+        quizQuestion.textContent = showQuestions;
+        
+    }
+    showChoices.array.forEach(newEl => {
+        var classList = document.createElement("li");
+        li.textContent = newEl;
+        quizQuestion.appendChild(li);
+        li.addEventListener("click",)
+    });
 }
+
+
+
+
+
+
+
+
+
+
 
 //show the welcome screen
 //when user clicks start hide the welcome screen,show the question area
