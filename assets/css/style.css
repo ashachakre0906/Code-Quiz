@@ -24,11 +24,13 @@ html body{
     flex-direction: column;
     justify-content:center;
     align-items: center;
+}
+#welcome {
     margin:0px 0px 32px;
-    padding:64px 0px;
+    padding:64px 0px ;
 }
 #quiz {
-   display: none;
+   display:none;
 }
 #inputscore{
   display:none;
@@ -36,7 +38,7 @@ html body{
 #highscore{
    display:none;
 }
-h1{
+h1,h2{
     font-size:35px;
     font-weight:bold;
     margin: 0px 0px 24px;
@@ -63,32 +65,34 @@ h1{
 
 }  
 .common-button:hover{
-    background-color: darkgoldenrod;
+    background-color:cadetblue
+}
+.largeButtons{
+    cursor: pointer;
+    color:#212529;
+    background-color:ivory;
+    border-color:black;
+    padding: 0.5rem 1rem;
+    margin:0px 0px 16px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    width:500px;
+    height:50px;
+}
+.largeButtons:hover
+{
+background-color: cadetblue;
+}
+input{
+    display: inline-block;
+     text-align: start;
+     cursor: text;
+     margin: 0rem;
+     padding:5px 15px;
+     border-width:2px;
 }
 
-  
-/* .quiz-intro { */
-  /* position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%); */
-  /* text-align: center;
-  text-decoration: none;
-  line-height: 1.5;
-  font-size: 1rem;
-}
-.content {
-  padding: 10px;
-  font-size: 1.2rem;
-} */ 
-/* 
-} */
-/* .button:hover{
-    background-color: darkgoldenrod;
-}
-.hidden {
-  display: none;
-}
 section {
   line-height: 1.8;
   font-size: 1.2rem;
