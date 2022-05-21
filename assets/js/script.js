@@ -99,15 +99,9 @@ function renderQuestion(){
     headerEl.classList.add("hidden");//Targets the header element which will add the class hidden
     mainEl.classList.remove("hidden");//Targets the main element which will remove the class hidden
     // h2.innerText=questions[questionCounter].question
-    
+
 }
-const radios = document.querySelectorAll('.radioButton')
-for (const radio of radios) {
-  radio.onclick = (e) => {
-    console.log(e.target.value);
-  
-  }
-}
+
 function nextQuestion(){
 
 
