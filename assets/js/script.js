@@ -38,18 +38,21 @@ var questions =[{
 //Global Variables
 var headerEl = document.getElementById("welcome")
 var mainEl = document.getElementById("quiz")
-var currentQuestion = 0;
+var startButton = document.getElementById("startQuiz");
+startButton.addEventListener("click",startQuiz);
+var timerEl = document.querySelector("#timer");
+//var currentQuestion = 0
 var questionArr=[""];
 var timeGiven = 75;
 var interval;
 var timeElapsed = 0;//The amount of time that passes from the start of an event to its finish.
-var timerEl = document.querySelector("#timer");
 //Start quiz function
 function startQuiz(){
     headerEl.style.display="none";//hide welcome
     mainEl.style.display="block";//displays the quiz screen by setting up to block
     renderQuestion();
     startTimer();
+
 }
 //Starts and update timer
 function startTimer() {
@@ -58,8 +61,7 @@ function startTimer() {
         timeElapsed++;
         timerEl.textContent = timeGiven - timeElapsed;
         if (timeElapsed >= timeGiven) {
-            currentQuestion = questions.length;
-            nextQuestion();
+            //endGame();-Later
         }
     }, 1000);
 }
@@ -81,25 +83,49 @@ function stopTimer(){
 function reset() {
     score = 0;
     currentQ = 0;
-    secondsElapsed = 0;
+    timeElapsed = 0;
     timerEl.textContent = 0;
 }
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
     if (questions[currentQ].answer ==questions[currentQ].choices[answer.id]){
         score += 5 ;
-        displayMessage("Correct!");
+      displayMessage("Correct!");
     }
     else{
-        secondsElapsed += 10;
+        timeElapsed += 10;
         displayMessage("OOPS,Its Incorrect...");
     }
+    if (currentQ < questions.length -1){
+        currentQ++;
+        renderQuestion();
     }
+    else{
+
+        //Implement the logic to end the game
+    }
+}
+    
+//display message for few seconds
+function displayMessage(m) {
+    let messageHr = document.createElement("hr");
+    let messageEl = document.createElement("div");
+    messageEl.textContent = m;
+    document.querySelector(".container-2").appendChild(messageHr);
+    document.querySelector(".container-2").appendChild(messageEl);
+    setTimeout(function () {
+            messageHr.remove();
+            messageEl.remove();
+    }, 2000);
+
+}
+
     //Calls to check if the answer is selected
      answersEl.addEventListener("click" , function(e){
       if (e.target.matches("button")){
           checkAnswer(e.target);
       }
+    });
 
 
 
@@ -108,8 +134,6 @@ function checkAnswer(answer){
 
     
 
-var startButton = document.getElementById("startQuiz");
-startButton.addEventListener("click",startQuiz);
 
 
 
