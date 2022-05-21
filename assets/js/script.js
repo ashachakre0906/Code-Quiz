@@ -41,11 +41,22 @@ var mainEl = document.getElementById("quiz")
 var startButton = document.getElementById("startQuiz");
 startButton.addEventListener("click",startQuiz);
 var timerEl = document.querySelector("#timer");
-//var currentQuestion = 0
-var questionArr=[""];
-var timeGiven = 75;
+var timeGiven = 60;
 var interval;
 var timeElapsed = 0;//The amount of time that passes from the start of an event to its finish.
+//input score page elements
+var inputScoreEl = document.querySelector("#inputscore");
+var initialsEl = document.querySelector("#initials");
+var submitInitial = document.querySelector("#submitInitials");
+var scoreEl = document.querySelector("#score");
+//Render High Scores Page Elements 
+var highScoresEl = document.querySelector("#highscore");
+var scoresEl = document.querySelector("#scores");
+var goBackEl = document.querySelector("#goback");
+var clearScoresEl = document.querySelector("clearscores");
+//Viewhigh score and timer page elements
+var viewHScoresBtnEl = document.querySelector("#viewhighscores");
+var timerEl = document.querySelector("#timer");
 //Start quiz function
 function startQuiz(){
     headerEl.style.display="none";//hide welcome
@@ -103,6 +114,7 @@ function checkAnswer(answer){
     else{
 
         //Implement the logic to end the game
+        
     }
 }
     
