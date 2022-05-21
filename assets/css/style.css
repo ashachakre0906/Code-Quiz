@@ -48,6 +48,9 @@ h1,h2{
     margin: 0px 0px 24px;
     color:#212529;
 }
+#viewhighscores{
+    cursor:pointer;
+}
 
 .common-button {
     cursor: pointer;
