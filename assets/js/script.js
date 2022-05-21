@@ -1,6 +1,6 @@
 //Created variable which holds the questions and answer
 var questions =[{
-    question: "1.Which of the following best describes JavaScript",
+    question: "Which of the following best describes JavaScript",
     choices: ["vara low-level programming language", "a scripting language precompiled in the browser.", "an object-oriented scripting language."],
     answer: "an object-oriented scripting language"
 },
@@ -36,80 +36,97 @@ var questions =[{
 },
 ];
 //score will starts at 0
-var currentScore =0;
 //index of question array starts at 0
-var questionArr =0;
-//Timeleft on timer
-var timeLeft =0;
+var questionCounter =0;//track the question
 //start button to get the quiz started
 var startButton = document.getElementById("start-quiz");
+var radioButton = document.getElementById("main")
 //Total Time set when the game starts
-var startingTime =60;
-//Time starts from 0
-var timeInterval=0;
 //10 sec will be deducted for every incorrect answer
-var penalty = 10;
-
-startButton.addEventListener("click",renderQuestion);
-// var createHighScore = document.getElementById("create-high-score");
+var h2 =document.getElementById("h2");
+var createHighScore = document.getElementById("create-high-score");
 // createHighScore.addEventListener("click",highScore);
-// var gobackbutton = document.getElementById("go-Back");
-// gobackbutton.addEventListener("click",renderStartPage);
-// var clearScores =document.getElementById("clear-high-score");
+var gobackbutton = document.getElementById("go-Back");
+// gobackbutton.addEventListener("click",renderQuestion);
+var clearScores =document.getElementById("clear-high-score");
 // clearScores.addEventListener("click",clearScores);
 var headerEl = document.getElementById("header")
-var mainEl = document.getElementById("main")
-// var questionArr=[""];
-//Start timer when the game starts after user clicks start-quiz button
-
-startButton.addEventListener("click",function() {
-    if (timeInterval===0){
-        timeInterval = setInterval(function() {
-            startingTime--;
-            timeLeft.textContent= "Seconds Left:" + startingTime;
-            if(startingTime <= 0){
-                    clearInterval(timeInterval);
-                    endGame();
-                    timeLeft.textContent = "You are out of time!"
-                }
-            }, 1000);
+var mainEl = document.getElementById("option-list")
+var currentQuestion = 0;
+var questionArr=[""];
+var timeGiven = 75;
+var interval;
+var timeElapsed = 0;//The amount of time that passes from the start of an event to its finish.
+var timerEl = document.querySelector("#timer");
+//Starts and update timer
+function startTimer() {
+    timerEl.textContent = timeGiven;
+    interval = setInterval(function () {
+        secondsElapsed++;
+        timerEl.textContent = timeGiven - timeElapsed;
+        if (timeElapsed >= timeGiven) {
+            currentQuestion = questions.length;
+            nextQuestion();
         }
-        renderQuestion();
-});
+    }, 1000);
+}
+//Stops Timer
+function stopTimer(){
+    clearInterval(interval);
+}
 
 
+
+
+    
+// }
+//     if (timeInterval===0){
+//         timeInterval = setInterval(function() {
+//             startingTime--;
+//             timeLeft.textContent= "Seconds Left:" + startingTime;
+//             if(startingTime <= 0){
+//                     clearInterval(timeInterval);
+//                     endGame();
+//                     timeLeft.textContent = "You are out of time!"
+//                 }
+//             }, 1000);
+//         }
+//         renderQuestion();
+// });
+
+startButton.addEventListener("click",renderQuestion);
 function renderQuestion(){
     headerEl.classList.add("hidden");//Targets the header element which will add the class hidden
     mainEl.classList.remove("hidden");//Targets the main element which will remove the class hidden
-    renderQuestion.innerHTML = "";
-    createList.innerHTML = "";
-    for ( var i = 0;i < questions.length; i++){
-        var showQuestions = questions[renderQuestion].question;
-        var showChoices = questions[renderQuestion].choices;
-        quizQuestion.textContent = showQuestions;
-        
-    }
-    showChoices.array.forEach(newEl => {
-        var classList = document.createElement("li");
-        li.textContent = newEl;
-        quizQuestion.appendChild(li);
-        li.addEventListener("click",)
-    });
+    // h2.innerText=questions[questionCounter].question
+    
+}
+const radios = document.querySelectorAll('.radioButton')
+for (const radio of radios) {
+  radio.onclick = (e) => {
+    console.log(e.target.value);
+  
+  }
+}
+function nextQuestion(){
+
+
 }
 
 
 
 
 
+startButton.addEventListener("click",renderQuestion);
 
 
 
 
 
 
-//show the welcome screen
-//when user clicks start hide the welcome screen,show the question area
-//populate the question area with the question and answer buttons
-//when 
 
 
+// show the welcome screen
+// when user clicks start hide the welcome screen,show the question area
+// populate the question area with the question and answer buttons
+// when 
