@@ -1,42 +1,72 @@
-/* * {
+html body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-body {
   background-color: #a2b9bc;
-  font-family: "Raleway", sans-serif;
+  font-family:'Times New Roman', Times, serif,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  color:#212529;
 }
-/*height:100vh good for responsive */
-/* .outer-div-container {
-  padding: 10px;
-  height: 100vh;
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2.0rem;
+    font-weight:800;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
 }
-.nav-bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 5px;
-  padding-right: 50px;
-  font-size: 1.2rem;
-} */
-/* a {
- outline:none;
- text-decoration: none;
- color:black;
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin:0px 0px 32px;
+    padding:64px 0px;
 }
-.inner-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  /* position: relative; */
-  /* height: 50%;
-  width: 50%;
-  margin: 8% auto;
-  background-color: cadetblue;
-  box-shadow: 20px 20px 50px grey;
-} */
+#quiz {
+   display: none;
+}
+#inputscore{
+  display:none;
+}
+#highscore{
+   display:none;
+}
+h1{
+    font-size:35px;
+    font-weight:bold;
+    margin: 0px 0px 24px;
+}
+.para{
+    font-size:20px;
+    margin: 0px 0px 24px;
+    color:#212529;
+}
+
+.common-button {
+    cursor: pointer;
+    background-color: whitesmoke;
+    color:black;
+    text-align: center;
+    text-decoration: none;
+    border:1px solid #b0c4d8;
+    margin: 20px 20px;
+    padding: 10px 16px;
+    font-size: 20px;
+    border-radius:10px 10px;
+    font-weight:bolder;
+    box-shadow: 20px 20px 50px grey;
+
+}  
+.common-button:hover{
+    background-color: darkgoldenrod;
+}
+
+  
 /* .quiz-intro { */
   /* position:absolute;
     top:50%;
@@ -51,18 +81,7 @@ body {
   padding: 10px;
   font-size: 1.2rem;
 } */ 
-/* .button {
-  cursor: pointer;
-  background-color: whitesmoke;
-  color:black;
-  text-align: center;
-  text-decoration: none;
-  border:1px solid #b0c4d8;
-  margin: 20px 20px;
-  padding: 15px 32px;
-  font-size: 1.1em;
-  border-radius:20px 10px;
-  
+/* 
 } */
 /* .button:hover{
     background-color: darkgoldenrod;
@@ -80,5 +99,5 @@ section h2 {
 label {
   margin-left: 8px;
 }
- */
+
 
