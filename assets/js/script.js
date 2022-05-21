@@ -1,7 +1,7 @@
 //Created variable which holds the questions and answer
 var questions =[{
     question: "Which of the following best describes JavaScript",
-    choices: ["vara low-level programming language", "a scripting language precompiled in the browser.", "an object-oriented scripting language."],
+    choices: ["a low-level programming language", "a scripting language precompiled in the browser.", "an object-oriented scripting language.","none of the above"],
     answer: "an object-oriented scripting language"
 },
 {
@@ -39,8 +39,6 @@ var questions =[{
 //index of question array starts at 0
 var questionCounter =0;//track the question
 //start button to get the quiz started
-var startButton = document.getElementById("start-quiz");
-var radioButton = document.getElementById("main")
 //Total Time set when the game starts
 //10 sec will be deducted for every incorrect answer
 var h2 =document.getElementById("h2");
@@ -50,8 +48,8 @@ var gobackbutton = document.getElementById("go-Back");
 // gobackbutton.addEventListener("click",renderQuestion);
 var clearScores =document.getElementById("clear-high-score");
 // clearScores.addEventListener("click",clearScores);
-var headerEl = document.getElementById("header")
-var mainEl = document.getElementById("option-list")
+var headerEl = document.getElementById("welcome")
+var mainEl = document.getElementById("quiz")
 var currentQuestion = 0;
 var questionArr=[""];
 var timeGiven = 75;
@@ -62,7 +60,7 @@ var timerEl = document.querySelector("#timer");
 function startTimer() {
     timerEl.textContent = timeGiven;
     interval = setInterval(function () {
-        secondsElapsed++;
+        timeElapsed++;
         timerEl.textContent = timeGiven - timeElapsed;
         if (timeElapsed >= timeGiven) {
             currentQuestion = questions.length;
@@ -70,6 +68,25 @@ function startTimer() {
         }
     }, 1000);
 }
+//Renders current question
+var questionEl = document.querySelector("#question");
+var answersEl = document.querySelector("#answers");
+var currentQ =0;
+function renderQuestion() {
+    questionEl.textContent = questions[currentQ].question;
+    for (i = 0; i < answersEl.children.length; i++) {
+        answersEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
+    }
+}
+
+function startQuiz(){
+    headerEl.style.display="none";//hide welcome
+    mainEl.style.display="block";//displays the quiz screen by setting up to block
+    renderQuestion();
+    startTimer();
+
+}
+
 //Stops Timer
 function stopTimer(){
     clearInterval(interval);
@@ -93,25 +110,8 @@ function stopTimer(){
 //         }
 //         renderQuestion();
 // });
-
-startButton.addEventListener("click",renderQuestion);
-function renderQuestion(){
-    headerEl.classList.add("hidden");//Targets the header element which will add the class hidden
-    mainEl.classList.remove("hidden");//Targets the main element which will remove the class hidden
-    // h2.innerText=questions[questionCounter].question
-
-}
-
-function nextQuestion(){
-
-
-}
-
-
-
-
-
-startButton.addEventListener("click",renderQuestion);
+var startButton = document.getElementById("startQuiz");
+startButton.addEventListener("click",startQuiz);
 
 
 
