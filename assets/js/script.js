@@ -101,19 +101,16 @@ function reset() {
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
     if (questions[currentQ].answer ==questions[currentQ].choices[answer.id]){
-        score <= 5 ;
+        score += 5 ;
       displayMessage("Correct!");
     }
     else{
-        timeGiven += 10;
+        timeGiven -= 10;
         displayMessage("OOPS,Its Incorrect...");
     }
     if (currentQ < questions.length -1){
         currentQ++;
         renderQuestion();
-    }
-    else{
-    
     }
 }
 // //function to end the game 
