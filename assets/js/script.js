@@ -41,9 +41,7 @@ var mainEl = document.getElementById("quiz")
 var startButton = document.getElementById("startQuiz");
 startButton.addEventListener("click",startQuiz);
 var timerEl = document.querySelector("#timer");
-var timeGiven = 60;
-var interval;
-var timeElapsed = 0;//The amount of time that passes from the start of an event to its finish.
+// var timeElapsed = 0;//The amount of time that passes from the start of an event to its finish.
 //input score page elements
 var inputScoreEl = document.querySelector("#inputscore");
 var initialsEl = document.querySelector("#initials");
@@ -55,8 +53,8 @@ var scoresEl = document.querySelector("#scores");
 var goBackEl = document.querySelector("#goback");
 var clearScoresEl = document.querySelector("clearscores");
 //Viewhigh score and timer page elements
-var viewHScoresBtnEl = document.querySelector("#viewhighscores");
-var timerEl = document.querySelector("#timer");
+var viewHighScoresBtnEl = document.querySelector("#viewhighscores");
+// var timerEl = document.querySelector("#timer");
 //Start quiz function
 function startQuiz(){
     headerEl.style.display="none";//hide welcome
@@ -66,16 +64,24 @@ function startQuiz(){
 
 }
 //Starts and update timer
+var timeGiven = 60;
+var timerEl = document.querySelector("#timer");
 function startTimer() {
-    timerEl.textContent = timeGiven;
-    interval = setInterval(function () {
-        timeElapsed++;
-        timerEl.textContent = timeGiven - timeElapsed;
-        if (timeElapsed >= timeGiven) {
-            //endGame();-Later
+    var interval= setInterval(function () {
+        if (timeGiven > 1){
+            timerEl.textContent = timeGiven + "seconds remaining";
+            timeGiven--;
+        }else if (timeGiven === 1){
+            timerEl.textContent = timeGiven + "seconds remaining";
+            timeGiven--;
+        }else {
+            timerEl.textContent = '';
+            clearInterval(interval);
         }
-    }, 1000);
-}
+    },1000);
+}       
+        
+    
 //Renders current question
 var questionEl = document.querySelector("#question");
 var answersEl = document.querySelector("#answers");
@@ -86,25 +92,20 @@ function renderQuestion() {
         answersEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
     }
 }
-//Stops Timer
-function stopTimer(){
-    clearInterval(interval);
-}
 //Reset local variables
 function reset() {
     score = 0;
     currentQ = 0;
-    timeElapsed = 0;
     timerEl.textContent = 0;
 }
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
     if (questions[currentQ].answer ==questions[currentQ].choices[answer.id]){
-        score += 5 ;
+        score <= 5 ;
       displayMessage("Correct!");
     }
     else{
-        timeElapsed += 10;
+        timeGiven += 10;
         displayMessage("OOPS,Its Incorrect...");
     }
     if (currentQ < questions.length -1){
@@ -112,13 +113,17 @@ function checkAnswer(answer){
         renderQuestion();
     }
     else{
-
-        //Implement the logic to end the game
-        
+    
     }
 }
+// //function to end the game 
+// function gameOver() {
+//     document.getElementById("inputscore").textContent = "Game Over";
+//     document.getElementById("inputscore").textContent = "block";
+
+// }
     
-//display message for few seconds
+//display messagecorrent or incorrect for few seconds
 function displayMessage(m) {
     let messageHr = document.createElement("hr");
     let messageEl = document.createElement("div");
@@ -128,10 +133,9 @@ function displayMessage(m) {
     setTimeout(function () {
             messageHr.remove();
             messageEl.remove();
-    }, 2000);
+    }, 3000);
 
 }
-
     //Calls to check if the answer is selected
      answersEl.addEventListener("click" , function(e){
       if (e.target.matches("button")){
