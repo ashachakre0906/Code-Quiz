@@ -15,9 +15,9 @@ var questions =[{
     answer: "[]"
 },
 {
-    question: "What is the index position of 'mango' in the following array? ['banana', 'mango', 'apple', 'orange', 'strawberries']",
-    choices: ["0","1", "2", "3"],
-    answer: "1"
+    question: "Which method of an Array object adds and/or removes elements from an array.",
+    choices: ["Reverse","shift", "slice", "splice"],
+    answer: "splice"
 },
 {
     question: "What does '===' mean in javascript when comparing two things?",
@@ -41,7 +41,6 @@ var mainEl = document.getElementById("quiz")
 var startButton = document.getElementById("startQuiz");
 startButton.addEventListener("click",startQuiz);
 var timerEl = document.querySelector("#timer");
-// var timeElapsed = 0;//The amount of time that passes from the start of an event to its finish.
 //input score page elements
 var inputScoreEl = document.querySelector("#inputscore");
 var initialsEl = document.querySelector("#initials");
@@ -54,7 +53,7 @@ var goBackEl = document.querySelector("#goback");
 var clearScoresEl = document.querySelector("clearscores");
 //Viewhigh score and timer page elements
 var viewHighScoresBtnEl = document.querySelector("#viewhighscores");
-// var timerEl = document.querySelector("#timer");
+var timerEl = document.querySelector("#timer");
 //Start quiz function
 function startQuiz(){
     headerEl.style.display="none";//hide welcome
@@ -74,12 +73,22 @@ function startTimer() {
         }else if (timeGiven === 1){
             timerEl.textContent = timeGiven + "seconds remaining";
             timeGiven--;
+        }else if (timeGiven <= 0 ){
+            timerEl.textContent = "sorry,you are out of time!";
         }else {
             timerEl.textContent = '';
             clearInterval(interval);
+        questionEl.style.display = "none";
+        answersEl.style.display = "none";
+        viewHighScoresBtnEl.style.display = "none";
+        timerEl.style.display = "none";
         }
     },1000);
-}       
+}
+//Function to end game and show the final score
+function endGame () {
+
+}
         
     
 //Renders current question
@@ -113,14 +122,8 @@ function checkAnswer(answer){
         renderQuestion();
     }
 }
-// //function to end the game 
-// function gameOver() {
-//     document.getElementById("inputscore").textContent = "Game Over";
-//     document.getElementById("inputscore").textContent = "block";
-
-// }
     
-//display messagecorrent or incorrect for few seconds
+//display message correct or incorrect for few seconds
 function displayMessage(m) {
     let messageHr = document.createElement("hr");
     let messageEl = document.createElement("div");
@@ -130,7 +133,7 @@ function displayMessage(m) {
     setTimeout(function () {
             messageHr.remove();
             messageEl.remove();
-    }, 3000);
+    }, 1000);
 
 }
     //Calls to check if the answer is selected
@@ -139,6 +142,7 @@ function displayMessage(m) {
           checkAnswer(e.target);
       }
     });
+    //function to display final score
 
 
 
