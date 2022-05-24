@@ -24,15 +24,16 @@ html body{
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    margin:0px 0px 32px;
-    padding:64px 0px ;
+    padding:35px 16px;
 }
+
 #welcome {
     margin:0px 0px 32px;
     padding:64px 0px ;
 }
 #quiz {
    display:none;
+   border-color:10px solid black;
 }
 #inputscore{
   display:none;
@@ -40,10 +41,9 @@ html body{
 #highscore{
    display:none;
 }
-h1,h2{
+h2{
     font-size:25px;
     font-weight:bold;
-    margin: 0px 0px 24px;
     text-align: center;
 }
 .para{
@@ -78,8 +78,8 @@ h1,h2{
     color:#212529;
     background-color:ivory;
     border-color:black;
-    padding: 0.5rem 1rem;
-    margin:0px 0px 16px;
+    /* padding: 0.5rem 1rem; */
+    /* margin:0px 0px 16px; */
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: 0.3rem;

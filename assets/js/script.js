@@ -1,6 +1,6 @@
 //Created variable which holds the questions and answer
 var questions =[{
-    question: "Which of the following best describes JavaScript",
+    question: "Which of the following best describes JavaScript ?",
     choices: ["a low-level programming language", "a scripting language precompiled in the browser.", "an object-oriented scripting language.","none of the above"],
     answer: "an object-oriented scripting language"
 },
@@ -68,29 +68,27 @@ var timerEl = document.querySelector("#timer");
 function startTimer() {
     var interval= setInterval(function () {
         if (timeGiven > 1){
-            timerEl.textContent = timeGiven + "seconds remaining";
+            timerEl.textContent = timeGiven + " secs";
             timeGiven--;
         }else if (timeGiven === 1){
-            timerEl.textContent = timeGiven + "seconds remaining";
+            timerEl.textContent = timeGiven;
             timeGiven--;
         }else if (timeGiven <= 0 ){
-            timerEl.textContent = "sorry,you are out of time!";
+            timerEl.textContent = "sorry, you are out of time!";
+            endGame();
         }else {
             timerEl.textContent = '';
             clearInterval(interval);
-        questionEl.style.display = "none";
-        answersEl.style.display = "none";
-        viewHighScoresBtnEl.style.display = "none";
-        timerEl.style.display = "none";
         }
     },1000);
 }
 //Function to end game and show the final score
 function endGame () {
-
+    questionEl.style.display = "none";
+    answersEl.style.display = "none";
+    timerEl.style.display = "none";
 }
-        
-    
+           
 //Renders current question
 var questionEl = document.querySelector("#question");
 var answersEl = document.querySelector("#answers");
@@ -109,13 +107,13 @@ function reset() {
 }
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
-    if (questions[currentQ].answer ==questions[currentQ].choices[answer.id]){
+    if (questions[currentQ].answer == questions[currentQ].choices[answer.id]){
         score += 5 ;
       displayMessage("Correct!");
     }
     else{
         timeGiven -= 10;
-        displayMessage("OOPS,Its Incorrect...");
+        displayMessage("OOPS,that is incorrect...");
     }
     if (currentQ < questions.length -1){
         currentQ++;
@@ -142,7 +140,7 @@ function displayMessage(m) {
           checkAnswer(e.target);
       }
     });
-    //function to display final score
+    //function to View high score
 
 
 
