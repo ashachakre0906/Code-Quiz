@@ -19,6 +19,22 @@ html body{
     margin-bottom: 15px;
     
 }
+.container-3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    padding: 25px;
+    width: 60%;
+    height: 50%;
+    border: 5px solid rgb(14, 14, 56);
+    border-radius: 15px;
+    background-color: rgb(174 197 211);
+    color: rgb(14, 14, 56);   
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -26,7 +42,6 @@ html body{
     align-items: center;
     padding:35px 16px;
 }
-
 #welcome {
     margin:0px 0px 32px;
     padding:64px 0px ;
@@ -38,9 +53,9 @@ html body{
 #inputscore{
   display:none;
 }
-/* #highscore{
+#highscore{
    display:none;
-} */
+}
 h2{
     font-size:25px;
     font-weight:bold;
