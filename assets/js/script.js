@@ -130,8 +130,8 @@ function displayMessage(m) {
     let messageHr = document.createElement("hr");
     let messageEl = document.createElement("div");
     messageEl.textContent = m;
-    document.querySelector(".container-2").appendChild(messageHr);
-    document.querySelector(".container-2").appendChild(messageEl);
+    document.querySelector(".container-3").appendChild(messageHr);
+    document.querySelector(".container-3").appendChild(messageEl);
     setTimeout(function () {
             messageHr.remove();
             messageEl.remove();
@@ -152,14 +152,18 @@ function displayMessage(m) {
         }
     console.log(scoreData);
     highScore.push(scoreData);//Pushing the data to scoreData array
-    localStorage.setItem("highscores",JSON.stringify(highScore));//stor
+    localStorage.setItem("highscores",JSON.stringify(highScore));
+    initialsEl.value = '';
+    inputScoreEl.style.display = "none";
+    viewHighScoresBtnEl.style.display = "block";
     });
-
-    highScoresEl.addEventListener("click",function (displayScores){ 
+    //Displaying high scores
+    viewHighScoresBtnEl.addEventListener("click",function (displayScores){ 
     for (i = 0;i < highScore.length; i++){
-       //create a list item
-       //append the list to highscore div
-
+        console.log(displayScores);
+        var scoreLi = document.createElement("li");
+        scoreLi.textContent = (`${highScore[i].initials}: ${highScore[i].score}`);
+        viewHighScoresBtnEl.append(scoreLi);
     }
 });
 
