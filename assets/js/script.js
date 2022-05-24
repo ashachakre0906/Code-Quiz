@@ -152,16 +152,16 @@ function displayMessage(m) {
         }
     console.log(scoreData);
     highScore.push(scoreData);//Pushing the data to scoreData array
-    localStorage.setItem("highscores",JSON.stringify(highScore));//s
+    localStorage.setItem("highscores",JSON.stringify(highScore));//stor
     });
 
-function displayScores(){
+    highScoresEl.addEventListener("click",function (displayScores){ 
     for (i = 0;i < highScore.length; i++){
        //create a list item
        //append the list to highscore div
 
     }
-};
+});
 
 
 
