@@ -38,9 +38,9 @@ html body{
 #inputscore{
   display:none;
 }
-#highscore{
+/* #highscore{
    display:none;
-}
+} */
 h2{
     font-size:25px;
     font-weight:bold;

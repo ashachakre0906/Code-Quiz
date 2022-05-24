@@ -46,11 +46,13 @@ var inputScoreEl = document.querySelector("#inputscore");
 var initialsEl = document.querySelector("#initials");
 var submitInitial = document.querySelector("#submitInitials");
 var scoreEl = document.querySelector("#score");
+var score = 0;
 //Render High Scores Page Elements 
 var highScoresEl = document.querySelector("#highscore");
 var scoresEl = document.querySelector("#scores");
 var goBackEl = document.querySelector("#goback");
 var clearScoresEl = document.querySelector("clearscores");
+var highScore = JSON.parse(localStorage.getItem("highscores"))||[];//get the storage returned as undefined,
 //Viewhigh score and timer page elements
 var viewHighScoresBtnEl = document.querySelector("#viewhighscores");
 var timerEl = document.querySelector("#timer");
@@ -87,6 +89,8 @@ function endGame () {
     questionEl.style.display = "none";
     answersEl.style.display = "none";
     timerEl.style.display = "none";
+    inputScoreEl.style.display="block";
+    scoreEl.textContent = score;
 }
            
 //Renders current question
@@ -140,9 +144,24 @@ function displayMessage(m) {
           checkAnswer(e.target);
       }
     });
-    //function to View high score
+    //Event listener to post the score
+    submitInitials.addEventListener("click",function(e){
+        var scoreData = {
+         score:score,
+         initials:initialsEl.value,
+        }
+    console.log(scoreData);
+    highScore.push(scoreData);//Pushing the data to scoreData array
+    localStorage.setItem("highscores",JSON.stringify(highScore));//s
+    });
 
+function displayScores(){
+    for (i = 0;i < highScore.length; i++){
+       //create a list item
+       //append the list to highscore div
 
+    }
+};
 
 
 
