@@ -145,7 +145,7 @@ function displayMessage(m) {
       }
     });
     //Event listener to post the score
-    submitInitials.addEventListener("click",function(e){
+    submitInitial.addEventListener("click",function(e){
         var scoreData = {
          score:score,
          initials:initialsEl.value,
