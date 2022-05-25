@@ -1,7 +1,7 @@
 ## Title of the project
 Code-Quiz
 ## Decsription of the project
-Code-Quiz application to test user's knowledge of javascript.Users needs to answer the question based on the time alloted.Timer will deduct 10 secs for selecting every incorrect answer.User should see the final score at the end of the game.
+`Code-Quiz` application to test user's knowledge of javascript.Users needs to answer the question based on the time alloted.`Timer` will deduct 10 secs for selecting every incorrect answer.User should see the final score at the end of the game.`View high score` button should display the scores.`Goback`button should take the user back to Welcome quiz screen and `clear scores` should clear all the scores.
 
 ## Links
 
