@@ -26,7 +26,7 @@
         
         <div class="container-2">
             <div class="container-3">
-    
+                 
                 <!-- welcome  -->
                 <div class="container" id="welcome">
                     <h1 class="h1">Coding Quiz Challenge</h1>
@@ -36,6 +36,8 @@
                         <p class="para">Good Luck!!</p>                   
                         <button type="button" class="common-button" id="startQuiz">Start Quiz</button>
                 </div>
+                <!--div created via javascript to display the message correct or incorrect-->
+                <div class ="displaymessage"></div>
                 <!-- quiz -->
                 <div class="container" id="quiz">
                     <h2 class="h2" id="question"></h2>
@@ -54,23 +56,22 @@
                         </div>
                     </div>
                 </div>
-    
                 <!-- input high scores -->
                 <div class="container" id="inputscore">
-                    <h2 class="h2">All done!</h2>
+                    <h2 class="h2">Yay!! All Done !! </h2>
                     <p class="para">Your final score: <span id="score"></span></p>
                     <p class="para">Enter initials: <input type="text " id="initials"></p>
-                    <button type="common-button" class="common-button" id="submitInitials">Submit</button>
+                    <button type="button"  class="common-button" id="submitInitials">Submit</button>
                 </div>
                 <!-- view high scores -->
                 <div class="container" id="highscore">
-                    <button type="button" class="common-button" class="scores" id="viewhighscores">View Highscores</button>
+                    <h2 class ="h2">HighScores</h2>
                     <div class="container" id="scores">
                     </div>
                     <button type="button" class="common-button" id="goback">Go Back</button>
                     <button type="button" class="common-button" id="clearscores">Clear Scores</button>
                 </div> 
-            </div>
+            </div><br>
         </div>
     <!--Link to Javscript-->
    <script type="text/javascript" src="./assets/js/script.js"></script>

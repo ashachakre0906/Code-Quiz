@@ -34,7 +34,7 @@ html body{
     border-radius: 15px;
     background-color: rgb(174 197 211);
     color: rgb(14, 14, 56);  
-     
+
 }
 .container{
     display: flex;
@@ -54,9 +54,9 @@ html body{
 #inputscore{
   display:none;
 }
-/* #highscore{
+#highscore{
    display:none;
-} */
+}
 h2{
     font-size:25px;
     font-weight:bold;
@@ -70,7 +70,15 @@ h2{
 #viewhighscores{
     cursor:pointer;
 }
-
+hr{
+    color:black;
+    size: 100px;
+    font-weight: bolder;
+    margin: 25px;
+}
+#score{
+    list-style: none;
+}
 .common-button {
     cursor: pointer;
     background-color: whitesmoke;

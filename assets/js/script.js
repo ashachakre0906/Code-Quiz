@@ -52,7 +52,7 @@ var highScoresEl = document.querySelector("#highscore");
 var scoresEl = document.querySelector("#scores");
 var goBackEl = document.querySelector("#goback");
 var clearScoresEl = document.querySelector("clearscores");
-var highScore = JSON.parse(localStorage.getItem("highscores"))||[];//get the storage returned as undefined,
+var highscores = JSON.parse(localStorage.getItem("highscores"))||[];//get the storage returned as undefined,
 //Viewhigh score and timer page elements
 var viewHighScoresBtnEl = document.querySelector("#viewhighscores");
 var timerEl = document.querySelector("#timer");
@@ -67,8 +67,9 @@ function startQuiz(){
 //Starts and update timer
 var timeGiven = 60;
 var timerEl = document.querySelector("#timer");
+var interval;
 function startTimer() {
-    var interval= setInterval(function () {
+    interval= setInterval(function () {
         if (timeGiven > 1){
             timerEl.textContent = timeGiven + " secs";
             timeGiven--;
@@ -77,6 +78,7 @@ function startTimer() {
             timeGiven--;
         }else if (timeGiven <= 0 ){
             timerEl.textContent = "sorry, you are out of time!";
+            clearInterval(interval);
             endGame();
         }else {
             timerEl.textContent = '';
@@ -86,6 +88,7 @@ function startTimer() {
 }
 //Function to end game and show the final score
 function endGame () {
+    clearInterval(interval);
     questionEl.style.display = "none";
     answersEl.style.display = "none";
     timerEl.style.display = "none";
@@ -113,11 +116,11 @@ function reset() {
 function checkAnswer(answer){
     if (questions[currentQ].answer == questions[currentQ].choices[answer.id]){
         score += 5 ;
-      displayMessage("Correct!");
+      displayMessage("Awesome...its correct!");
     }
     else{
         timeGiven -= 10;
-        displayMessage("OOPS,that is incorrect...");
+        displayMessage("Oops,that is incorrect...");
     }
     if (currentQ < questions.length -1){
         currentQ++;
@@ -141,7 +144,13 @@ function displayMessage(m) {
     //Calls to check if the answer is selected
      answersEl.addEventListener("click" , function(e){
       if (e.target.matches("button")){
-          checkAnswer(e.target);
+          currentQ++;
+          if (currentQ == questions.length){
+              endGame();
+          }
+          else{
+            checkAnswer(e.target);
+          }
       }
     });
     //Event listener to post the score
@@ -151,22 +160,51 @@ function displayMessage(m) {
          initials:initialsEl.value,
         }
     console.log(scoreData);
-    highScore.push(scoreData);//Pushing the data to scoreData array
-    localStorage.setItem("highscores",JSON.stringify(highScore));
+    highscores.push(scoreData);//Pushing the data to scoreData array
+    localStorage.setItem("highscores",JSON.stringify(highscores));
     initialsEl.value = '';
     inputScoreEl.style.display = "none";
-    viewHighScoresBtnEl.style.display = "block";
+    highScoresEl.style.display = "block";
+    scoresEl.innerHTML = "";
+        for (i = 0;i < 4; i++){
+            var createLi=document.createElement("li");
+            createLi.classList.add ("row");
+            createLi.setAttribute("style", "background-color:PaleTurquoise;");
+            createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
+            scoresEl.append(createLi);
+        }    
     });
-    //Displaying high scores
-    viewHighScoresBtnEl.addEventListener("click",function (displayScores){ 
-    for (i = 0;i < highScore.length; i++){
-        console.log(displayScores);
-        var scoreLi = document.createElement("li");
-        scoreLi.textContent = (`${highScore[i].initials}: ${highScore[i].score}`);
-        viewHighScoresBtnEl.append(scoreLi);
-    }
-});
+    //Render HighScore function when clicked will show the scores
+//     highScoresEl.addEventListener("click",function (displayScores){ 
+//         scoresEl.innerHTML = "";
+//     for (i = 0;i < highscores.length; i++){
+//         console.log(displayScores);
+//         var createLi=document.createElement("li");
+//         createLi.className += "row";
+//         createLi.setAttribute("style", "background-color:PaleTurquoise;");
+//         createLi.textContent = (`${highscores[i].initials}: ${highscore[i].createLi}`);
+//         highScoresEl.append(createLi);
+//     }    
+// });
+// inputScoreEl.style.display = "none";
 
+// questionEl.style.display = "none";
+// answersEl.style.display = "none";
+// timerEl.style.display = "none";
+// inputScoreEl.style.display = "none";
+// highScoresEl.style.display = "block";
+
+
+// inputScoreEl.style.display = "none";
+//     highScoresEl.style.display = "block";
+//     scoresEl.innerHTML = "";
+//         for (i = 0;i < 4; i++){
+//             var createLi=document.createElement("li");
+//             createLi.classList.add ("row");
+//             createLi.setAttribute("style", "background-color:PaleTurquoise;");
+//             createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
+//             scoresEl.append(createLi);
+//         }    
 
 
 
