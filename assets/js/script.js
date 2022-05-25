@@ -51,18 +51,18 @@ var score = 0;
 var highScoresEl = document.querySelector("#highscore");
 var scoresEl = document.querySelector("#scores");
 var goBackEl = document.querySelector("#goback");
-var clearScoresEl = document.querySelector("clearscores");
+var clearScoresEl = document.querySelector("#clearscores");
 var highscores = JSON.parse(localStorage.getItem("highscores"))||[];//get the storage returned as undefined,
 //Viewhigh score and timer page elements
 var viewHighScoresBtnEl = document.querySelector("#viewhighscores");
 var timerEl = document.querySelector("#timer");
 //Start quiz function
 function startQuiz(){
+    reset();
     headerEl.style.display="none";//hide welcome
     mainEl.style.display="block";//displays the quiz screen by setting up to block
     renderQuestion();
     startTimer();
-
 }
 //Starts and update timer
 var timeGiven = 60;
@@ -81,6 +81,7 @@ function startTimer() {
             clearInterval(interval);
             endGame();
         }else {
+            timerEl.style.display = "none";
             timerEl.textContent = '';
             clearInterval(interval);
         }
@@ -110,7 +111,8 @@ function renderQuestion() {
 function reset() {
     score = 0;
     currentQ = 0;
-    timerEl.textContent = 0;
+    timeGiven= 60;
+    console.log("reset");
 }
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
@@ -120,7 +122,7 @@ function checkAnswer(answer){
     }
     else{
         timeGiven -= 10;
-        displayMessage("Oops,that is incorrect...");
+        displayMessage("Oops..that is incorrect...");
     }
     if (currentQ < questions.length -1){
         currentQ++;
@@ -133,8 +135,8 @@ function displayMessage(m) {
     let messageHr = document.createElement("hr");
     let messageEl = document.createElement("div");
     messageEl.textContent = m;
-    document.querySelector(".container-3").appendChild(messageHr);
-    document.querySelector(".container-3").appendChild(messageEl);
+    document.querySelector("#quiz").appendChild(messageHr);
+    document.querySelector("#quiz").appendChild(messageEl);
     setTimeout(function () {
             messageHr.remove();
             messageEl.remove();
@@ -165,6 +167,7 @@ function displayMessage(m) {
     initialsEl.value = '';
     inputScoreEl.style.display = "none";
     highScoresEl.style.display = "block";
+    timerEl.parentElement.style.display = "none";
     scoresEl.innerHTML = "";
         for (i = 0;i < 4; i++){
             var createLi=document.createElement("li");
@@ -174,6 +177,49 @@ function displayMessage(m) {
             scoresEl.append(createLi);
         }    
     });
+
+    //Adding event listener to View High score button 
+    viewHighScoresBtnEl.addEventListener("click",function ViewHighScore(){
+    headerEl.style.display ="none";    
+    inputScoreEl.style.display = "none";
+    highScoresEl.style.display = "block";
+    scoresEl.innerHTML = "";
+        for (i = 0;i < 4; i++){
+            var createLi=document.createElement("li");
+            createLi.classList.add ("row");
+            createLi.setAttribute("style", "background-color:PaleTurquoise;");
+            createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
+            scoresEl.append(createLi);
+        }    
+    });
+    clearScoresEl.addEventListener("click",function clearScores(){
+        scoresEl.innerHTML = "";
+        localStorage.removeItem("highscores");
+    });
+
+    goBackEl.addEventListener("click",function goBack(){
+        highScoresEl.style.display="none";
+        headerEl.style.display="block";
+        timerEl.parentElement.style.display="block";
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Render HighScore function when clicked will show the scores
 //     highScoresEl.addEventListener("click",function (displayScores){ 
 //         scoresEl.innerHTML = "";
