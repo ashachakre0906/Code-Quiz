@@ -1,7 +1,7 @@
 //Created variable which holds the questions and answer
 var questions =[{
     question: "Which of the following best describes JavaScript ?",
-    choices: ["a low-level programming language", "a scripting language precompiled in the browser.", "an object-oriented scripting language.","none of the above"],
+    choices: ["an object-oriented scripting language" , "high level programming language.","low level programming language" ,"none of the above"],
     answer: "an object-oriented scripting language"
 },
 {
@@ -21,7 +21,7 @@ var questions =[{
 },
 {
     question: "What does '===' mean in javascript when comparing two things?",
-    choices: ["They have the same value", "They are the same type", "They are the same value and type", "They are the same value, type, and style"],
+    choices: ["They have the same value", "They are the same type", "They are the same value and type", "None of the above"],
     answer: "They are the same value and type"
 },
 {
@@ -65,7 +65,7 @@ function startQuiz(){
     startTimer();
 }
 //Starts and update timer
-var timeGiven = 60;
+var timeGiven = 45;
 var timerEl = document.querySelector("#timer");
 var interval;
 function startTimer() {
@@ -73,8 +73,7 @@ function startTimer() {
         if (timeGiven > 0){
             timerEl.textContent = timeGiven + " secs";
             timeGiven--;        
-         }else if(timeGiven <= 0){
-            timerEl.textContent = "sorry you are out of time";
+         }else if(timeGiven === 0){
             endGame();
          }
         else {
@@ -84,13 +83,6 @@ function startTimer() {
         }
     },1000);
 }
-         //else if (timeGiven === 1){
-             //timerEl.textContent = timeGiven;
-            //timeGiven--;
-        // if (timeGiven <= 0 ){
-        //     timerEl.textContent = "sorry, you are out of time!";
-        //     endGame();
-        
 //Function to end game and show the final score
 function endGame () {
     timeGiven = 0;
@@ -115,7 +107,7 @@ function renderQuestion() {
 function reset() {
     score = 0;
     currentQ = 0;
-    timeGiven= 60;
+    timeGiven= 45;
 }
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
@@ -173,11 +165,11 @@ function displayMessage(m) {
     timerEl.parentElement.style.display = "none";
     scoresEl.innerHTML = "";
         for (i = 0;i < highscores.length; i++){
-            var createLi=document.createElement("li");
-            createLi.classList.add ("row");
-            createLi.setAttribute("style", "background-color:PaleTurquoise;");
-            createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
-            scoresEl.append(createLi);
+            var createLi=document.createElement("li");//creating a list
+            createLi.classList.add ("row");//adding to the classlist row
+            createLi.setAttribute("style", "background-color:PaleTurquoise;");//setting style to the row
+            createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;//addiing text to show the score
+            scoresEl.append(createLi);//appending the scores to the li
         }    
     });
 
@@ -187,7 +179,7 @@ function displayMessage(m) {
     inputScoreEl.style.display = "none";
     highScoresEl.style.display = "block";
     scoresEl.innerHTML = "";
-        for (i = 0;i < 4; i++){
+        for (i = 0;i < 4; i++){//it will only show upto 4 scores
             var createLi=document.createElement("li");
             createLi.classList.add ("row");
             createLi.setAttribute("style", "background-color:PaleTurquoise;");
@@ -198,7 +190,7 @@ function displayMessage(m) {
     //Adding event listener to Clear score button 
     clearScoresEl.addEventListener("click",function clearScores(){
         scoresEl.innerHTML = "";
-        localStorage.removeItem("highscores");
+        localStorage.removeItem("highscores");//removing data from the local storage
     });
     //Adding event listener to goback button 
     goBackEl.addEventListener("click",function goBack(){
