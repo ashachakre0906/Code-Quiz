@@ -75,7 +75,7 @@ function startTimer() {
             timeGiven--;        
          }else if(timeGiven === 0){
              console.log("end game should run");
-         endGame();
+            endGame();
          }
         else {
             timerEl.style.display = "none";
