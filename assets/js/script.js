@@ -70,11 +70,11 @@ var timerEl = document.querySelector("#timer");
 var interval;
 function startTimer() {
     interval= setInterval(function () {
-        if (timeGiven > 1){
+        if (timeGiven > 0){
             timerEl.textContent = timeGiven + " secs";
             timeGiven--;        
-         }else if(timeGiven === 0){
-             console.log("end game should run");
+         }else if(timeGiven <= 0){
+            timerEl.textContent = "sorry you are out of time";
             endGame();
          }
         else {
