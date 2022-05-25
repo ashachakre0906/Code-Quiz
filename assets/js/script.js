@@ -73,9 +73,10 @@ function startTimer() {
         if (timeGiven > 0){
             timerEl.textContent = timeGiven + " secs";
             timeGiven--;        
-         }else if(timeGiven === 0){
-            endGame();
          }
+        else if(timeGiven === 0){
+            endGame();
+        }
         else {
             timerEl.style.display = "none";
             timerEl.textContent = '';
@@ -180,7 +181,7 @@ function displayMessage(m) {
     highScoresEl.style.display = "block";
     scoresEl.innerHTML = "";
         for (i = 0;i < 4; i++){//it will only show upto 4 scores
-            var createLi=document.createElement("li");
+            var createLi = document.createElement("li");
             createLi.classList.add ("row");
             createLi.setAttribute("style", "background-color:PaleTurquoise;");
             createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;

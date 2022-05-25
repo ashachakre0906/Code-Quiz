@@ -44,9 +44,56 @@ THEN I can save my initials and score
 ### high score screen
 <img src =./assets/images/screenshot4.png>
 
+### Timer function
+```
+var timeGiven = 45;
+var timerEl = document.querySelector("#timer");
+var interval;
+function startTimer() {
+    interval= setInterval(function () {
+        if (timeGiven > 0){
+            timerEl.textContent = timeGiven + " secs";
+            timeGiven--;        
+         }
+        else if(timeGiven === 0){
+            endGame();
+        }
+        else {
+            timerEl.style.display = "none";
+            timerEl.textContent = '';
+            clearInterval(interval);
+        }
+    },1000);
+}
+```
+### Event listener to post the score
+```
+submitInitial.addEventListener("click",function(e){
+        var scoreData = {
+         score:score,
+         initials:initialsEl.value,
+        }
+    console.log(scoreData);
+    highscores.push(scoreData);//Pushing the data to scoreData array
+    localStorage.setItem("highscores",JSON.stringify(highscores));
+    initialsEl.value = '';
+    inputScoreEl.style.display = "none";
+    highScoresEl.style.display = "block";
+    timerEl.parentElement.style.display = "none";
+    scoresEl.innerHTML = "";
+        for (i = 0;i < highscores.length; i++){
+            var createLi=document.createElement("li");//creating a list
+            createLi.classList.add ("row");
+            createLi.setAttribute("style", "background-color:PaleTurquoise;");
+            createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
+            scoresEl.append(createLi);
+        }    
+    });  
+
+```
 ## Built with
 
-- HTML
+- HTMLs
 - CSS
 - Javascript
 
