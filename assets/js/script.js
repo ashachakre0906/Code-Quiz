@@ -52,7 +52,7 @@ var highScoresEl = document.querySelector("#highscore");
 var scoresEl = document.querySelector("#scores");
 var goBackEl = document.querySelector("#goback");
 var clearScoresEl = document.querySelector("#clearscores");
-var highscores = JSON.parse(localStorage.getItem("highscores"))||[];//get the storage returned as undefined,
+var highscores = JSON.parse(localStorage.getItem("highscores"))||[];
 //Viewhigh score and timer page elements
 var viewHighScoresBtnEl = document.querySelector("#viewhighscores");
 var timerEl = document.querySelector("#timer");
@@ -151,7 +151,7 @@ function displayMessage(m) {
           }
       }
     });
-    //Event listener to post the score
+//Event listener to post the score
     submitInitial.addEventListener("click",function(e){
         var scoreData = {
          score:score,

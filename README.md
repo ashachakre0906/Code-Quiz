@@ -1,7 +1,7 @@
 ## Title of the project
 Code-Quiz
 ## Decsription of the project
-`Code-Quiz` application to test user's knowledge of javascript.Users needs to answer the question based on the time alloted.`Timer` will deduct 10 secs for selecting every incorrect answer.User should see the final score at the end of the game.`View high score` button should display the scores.`Goback`button should take the user back to Welcome quiz screen and `clear scores` should clear all the scores.
+`Code-Quiz` application to test user's knowledge of javascript.User needs to answer the question based on the time given.`Timer` will deduct 10 secs for selecting every incorrect answer.User should see the final score at the end of the game.`View high score` button should display the scores.`Goback`button should take the user back to Welcome quiz screen and `clear scores` should clear all the scores.
 
 ## Links
 
@@ -45,6 +45,8 @@ THEN I can save my initials and score
 <img src =./assets/images/screenshot4.png>
 
 ### Timer function
+ The startTimer() function starts and updates the timer on the screen every 1000 milliseconds. It also checks the iteration if the time is up so the timer and the quiz can be stopped.The `endGame`function is called once the time is up or once the user is done.The `clearInterval()`method clears a timer set with the setInterval() method.
+
 ```
 var timeGiven = 45;
 var timerEl = document.querySelector("#timer");
@@ -67,6 +69,8 @@ function startTimer() {
 }
 ```
 ### Event listener to post the score
+Added a `EventListener`to the submitInitials button.Creating a new object which stores user's data like score and initials.localStorage stores key-value pairs store a entire javascript object we need to serialize it first with `JSON.stringify()`then to retrieve it from the store and convert it to an object again, we need to use `JSON.parse(localStorage.getItem("highscores")`.
+
 ```
 submitInitial.addEventListener("click",function(e){
         var scoreData = {
@@ -82,7 +86,7 @@ submitInitial.addEventListener("click",function(e){
     timerEl.parentElement.style.display = "none";
     scoresEl.innerHTML = "";
         for (i = 0;i < highscores.length; i++){
-            var createLi=document.createElement("li");//creating a list
+            var createLi=document.createElement("li");
             createLi.classList.add ("row");
             createLi.setAttribute("style", "background-color:PaleTurquoise;");
             createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
