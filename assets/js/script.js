@@ -72,27 +72,31 @@ function startTimer() {
     interval= setInterval(function () {
         if (timeGiven > 1){
             timerEl.textContent = timeGiven + " secs";
-            timeGiven--;
-        }else if (timeGiven === 1){
-            timerEl.textContent = timeGiven;
-            timeGiven--;
-        }else if (timeGiven <= 0 ){
-            timerEl.textContent = "sorry, you are out of time!";
-            clearInterval(interval);
-            endGame();
-        }else {
+            timeGiven--;        
+         }else if(timeGiven === 0){
+             console.log("end game should run");
+         endGame();
+         }
+        else {
             timerEl.style.display = "none";
             timerEl.textContent = '';
             clearInterval(interval);
         }
     },1000);
 }
+         //else if (timeGiven === 1){
+             //timerEl.textContent = timeGiven;
+            //timeGiven--;
+        // if (timeGiven <= 0 ){
+        //     timerEl.textContent = "sorry, you are out of time!";
+        //     endGame();
+        
 //Function to end game and show the final score
 function endGame () {
+    timeGiven = 0;
     clearInterval(interval);
-    questionEl.style.display = "none";
-    answersEl.style.display = "none";
-    timerEl.style.display = "none";
+    mainEl.style.display = "none";
+    timerEl.parentElement.style.display = "none";
     inputScoreEl.style.display="block";
     scoreEl.textContent = score;
 }
@@ -112,7 +116,6 @@ function reset() {
     score = 0;
     currentQ = 0;
     timeGiven= 60;
-    console.log("reset");
 }
 //checks answer based on current question and updates the user score
 function checkAnswer(answer){
@@ -169,7 +172,7 @@ function displayMessage(m) {
     highScoresEl.style.display = "block";
     timerEl.parentElement.style.display = "none";
     scoresEl.innerHTML = "";
-        for (i = 0;i < 4; i++){
+        for (i = 0;i < highscores.length; i++){
             var createLi=document.createElement("li");
             createLi.classList.add ("row");
             createLi.setAttribute("style", "background-color:PaleTurquoise;");
@@ -192,12 +195,14 @@ function displayMessage(m) {
             scoresEl.append(createLi);
         }    
     });
+    //Adding event listener to Clear score button 
     clearScoresEl.addEventListener("click",function clearScores(){
         scoresEl.innerHTML = "";
         localStorage.removeItem("highscores");
     });
-
+    //Adding event listener to goback button 
     goBackEl.addEventListener("click",function goBack(){
+        reset();
         highScoresEl.style.display="none";
         headerEl.style.display="block";
         timerEl.parentElement.style.display="block";
@@ -220,47 +225,4 @@ function displayMessage(m) {
 
 
 
-    //Render HighScore function when clicked will show the scores
-//     highScoresEl.addEventListener("click",function (displayScores){ 
-//         scoresEl.innerHTML = "";
-//     for (i = 0;i < highscores.length; i++){
-//         console.log(displayScores);
-//         var createLi=document.createElement("li");
-//         createLi.className += "row";
-//         createLi.setAttribute("style", "background-color:PaleTurquoise;");
-//         createLi.textContent = (`${highscores[i].initials}: ${highscore[i].createLi}`);
-//         highScoresEl.append(createLi);
-//     }    
-// });
-// inputScoreEl.style.display = "none";
-
-// questionEl.style.display = "none";
-// answersEl.style.display = "none";
-// timerEl.style.display = "none";
-// inputScoreEl.style.display = "none";
-// highScoresEl.style.display = "block";
-
-
-// inputScoreEl.style.display = "none";
-//     highScoresEl.style.display = "block";
-//     scoresEl.innerHTML = "";
-//         for (i = 0;i < 4; i++){
-//             var createLi=document.createElement("li");
-//             createLi.classList.add ("row");
-//             createLi.setAttribute("style", "background-color:PaleTurquoise;");
-//             createLi.textContent = `${highscores[i].initials}: ${highscores[i].score}`;
-//             scoresEl.append(createLi);
-//         }    
-
-
-
-    
-
-
-
-
-
-
-
-
-
+  
